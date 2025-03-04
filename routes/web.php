@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -91,8 +92,14 @@ Route::get('/students/edit', function () {
     return view('student.edit');
 })->name('students.edit');
 
+Route::get('/shop', function () {
+    return redirect()->route('shops.index');
+});
+
 Route::resource('cars', CarController::class);
 
 Route::resource('tests', TestController::class);
 
 Route::resource('students', StudentController::class);
+
+Route::resource('shops', ShopController::class);
