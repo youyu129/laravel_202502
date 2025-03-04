@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,6 +44,7 @@ class StudentController extends Controller
      */
     public function create()
     {
+        // dd("hi create");
         return view('student.create');
 
     }
@@ -52,7 +54,18 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // $input = $request->except('_token');
+        // dd($input);
+
+        $data = new Student;
+
+        $data->name   = $request->name;
+        $data->mobile = $request->mobile;
+
+        $data->save();
+
+        return redirect()->route('students.index');
     }
 
     /**
