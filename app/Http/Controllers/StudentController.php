@@ -12,21 +12,30 @@ class StudentController extends Controller
     public function index()
     {
         // dd('hello');
-        // $data = [
-        //     [
-        //         'id'   => 1,
-        //         'name' => 'amy',
-        //     ],
-        //     [
-        //         'id'   => 2,
-        //         'name' => 'bob',
-        //     ],
-        //     [
-        //         'id'   => 3,
-        //         'name' => 'cat',
-        //     ]];
-        $data = DB::table('students')->get();
-        return view('student.index', ['data' => $data]);
+        $data_fake = [
+            [
+                'id'   => 1,
+                'name' => 'amy',
+            ],
+            [
+                'id'   => 2,
+                'name' => 'bob',
+            ],
+            [
+                'id'   => 3,
+                'name' => 'cat',
+            ]];
+
+        // $users = DB::table('users')
+        //     ->select('name', 'email as user_email')
+        //     ->get();
+        $data = DB::table('students')
+            ->select('id as my_id', 'name as my_name', 'mobile as my_mobile')
+            ->get();
+        // $data = DB::table('students')->get();
+        // dd($data);
+
+        return view('student.index', ['data' => $data, 'data_fake' => $data_fake]);
     }
 
     /**

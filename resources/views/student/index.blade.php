@@ -23,27 +23,47 @@
 // dd($data);
 @endphp
 
-  <table class="table table-bordered">
-    <thead>
+<h2>Hello Controller</h2>
+<p>controller 的假資料</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      {{-- <th>Mobile</th> --}}
+    </tr>
+  </thead>
+  <tbody>
+      @foreach ($data_fake as $value)
       <tr>
-        <th width="10%">ID</th>
-        <th>NAME</th>
-        <th>MOBILE</th>
-      </tr>
-    </thead>
-    <tbody>
-      @php
-      // dd($data)
-      @endphp
-        @foreach($data as $value)
-      <tr>
-        <td>{{$value->id}}</td>
-        <td>{{$value->name}}</td>
-        <td>{{$value->mobile}}</td>
+          <td>{{$value['id']}}</td>
+          <td>{{$value['name']}}</td>
+          {{-- <td>{{$value['mobile']}}</td> --}}
       </tr>
       @endforeach
-    </tbody>
-  </table>
+  </tbody>
+</table>
+
+<h2>Hello DB</h2>
+<p>資料庫撈出來的資料</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>My_Mobile</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach ($data as $value)
+      <tr>
+          <td>{{$value->my_id}}</td>
+          <td>{{$value->my_name}}</td>
+          <td>{{$value->my_mobile}}</td>
+      </tr>
+      @endforeach
+  </tbody>
+</table>
 
 
 </div>
