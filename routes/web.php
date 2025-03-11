@@ -3,6 +3,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\Test0311Controller;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -81,17 +82,9 @@ Route::get('/student', function () {
     return redirect()->route('students.index');
 });
 
-Route::get('/students', function () {
-    return view('student.index');
-})->name('students.index');
-
-Route::get('/students/create', function () {
-    return view('student.create');
-})->name('students.create');
-
-Route::get('/students/edit', function () {
-    return view('student.edit');
-})->name('students.edit');
+Route::get('/student', function () {
+    return redirect()->route('students.index');
+});
 
 Route::get('/shop', function () {
     return redirect()->route('shops.index');
@@ -100,12 +93,32 @@ Route::get('/shop', function () {
 Route::get('/teacher', function () {
     return redirect()->route('teachers.index');
 });
+
+// 小名
+Route::get('/students', function () {
+    return view('student.index');
+})->name('students.index');
+
+Route::get('/test0311s/create', function () {
+    return view('test0311.create');
+})->name('test0311s.create');
+
+Route::get('/students/edit', function () {
+    return view('student.edit');
+})->name('students.edit');
+
 Route::get('/teachers', function () {
     return view('teacher.index');
 })->name('teachers.index');
 
+Route::get('/test0311s', function () {
+    return view('test0311.index');
+})->name('test0311s.index');
+
 // teachers
 Route::resource('teachers', TeacherController::class);
+
+Route::resource('test0311s', Test0311Controller::class);
 
 Route::resource('cars', CarController::class);
 

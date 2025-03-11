@@ -21,15 +21,17 @@
 // dd($data);
 @endphp
 
-<h2>Hello Teacher</h2>
+<h2>Hello Test0311</h2>
 <p>資料庫撈出來的資料</p>
 <p>
-  <a href="{{route('teachers.create')}}" class="btn btn-success">Add</a>
+  <a href="{{route('test0311s.create')}}" class="btn btn-success">Add</a>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Add modal
   </button>
 </p>
-
+@php
+// dd($data);
+@endphp
 {{--  --}}
 <table class="table text-center">
   <thead>
@@ -47,12 +49,12 @@
           <td>{{$value->name}}</td>
           <td>{{$value->mobile}}</td>
           <td>
-            {{-- {{route('teachers.edit')}} --}}
-            {{-- {{route('teachers.destroy')}} --}}
-            <form action="{{route('teachers.destroy',['teacher'=>$value->id])}}" method="post">
+            {{-- {{route('test0311s.edit')}} --}}
+            {{-- {{route('test0311s.destroy')}} --}}
+            <form action="{{route('test0311s.destroy',['test0311'=>$value->id])}}" method="post">
               @csrf
               @method('delete')
-              <a href="{{route('teachers.edit',['teacher'=>$value->id])}}" class="btn btn-warning">Edit</a>
+              <a href="{{route('test0311s.edit',['test0311'=>$value->id])}}" class="btn btn-warning">Edit</a>
               <button class="btn btn-danger ms-5">del</button>
             </form>
       </tr>
@@ -103,7 +105,7 @@
       <div class="modal-body">
         <div class="container mt-3">
           <h2>Add</h2>
-          <form action="{{route('teachers.store')}}" method="post">
+          <form action="{{route('test0311s.store')}}" method="post">
             @csrf
             <div class="mb-3 mt-3">
               <label for="text">Name:</label>
