@@ -25,7 +25,11 @@
 <p>資料庫撈出來的資料</p>
 <p>
   <a href="{{route('students.create')}}" class="btn btn-success">Add</a>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Add modal
+  </button>
 </p>
+
 {{--  --}}
 <table class="table text-center">
   <thead>
@@ -79,6 +83,50 @@
 
 </div>
 
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create Form</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container mt-3">
+          <h2>Add</h2>
+          <form action="{{route('students.store')}}" method="post">
+            @csrf
+            <div class="mb-3 mt-3">
+              <label for="text">Name:</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="text">Mobile:</label>
+              <input type="text" class="form-control" id="mobile" placeholder="Enter mobile" name="mobile">
+            </div>
+            {{-- <div class="form-check mb-3">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="remember"> Remember me
+              </label>
+            </div> --}}
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</form>
 </body>
 </html>
 
