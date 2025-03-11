@@ -2,6 +2,7 @@
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -96,10 +97,21 @@ Route::get('/shop', function () {
     return redirect()->route('shops.index');
 });
 
+Route::get('/teacher', function () {
+    return redirect()->route('teachers.index');
+});
+Route::get('/teachers', function () {
+    return view('teacher.index');
+})->name('teachers.index');
+
+// teachers
+Route::resource('teachers', TeacherController::class);
+
 Route::resource('cars', CarController::class);
 
 Route::resource('tests', TestController::class);
 
+// students
 Route::resource('students', StudentController::class);
 
 Route::resource('shops', ShopController::class);
