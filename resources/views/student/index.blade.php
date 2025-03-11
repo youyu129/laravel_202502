@@ -36,20 +36,20 @@
     <tr>
       <th>ID</th>
       <th>Name</th>
-      <th>My_Mobile</th>
-      <td>Option</td>
+      <th>Mobile</th>
+      <td>OPT</td>
     </tr>
   </thead>
   <tbody>
       @foreach ($data as $value)
       <tr>
-          <td>{{$value->my_id}}</td>
-          <td>{{$value->my_name}}</td>
-          <td>{{$value->my_mobile}}</td>
+          <td>{{$value->id}}</td>
+          <td>{{$value->name}}</td>
+          <td>{{$value->mobile}}</td>
           <td>
             {{-- {{route('students.edit')}} --}}
             {{-- {{route('students.destroy')}} --}}
-            <a href="" class="btn btn-primary">Edit</a>
+            <a href="{{route('students.edit',['student'=>$value->id])}}" class="btn btn-warning">Edit</a>
             <a href="" class="btn btn-danger ms-5">Del</a></td>
       </tr>
       @endforeach
@@ -109,11 +109,6 @@
               <label for="text">Mobile:</label>
               <input type="text" class="form-control" id="mobile" placeholder="Enter mobile" name="mobile">
             </div>
-            {{-- <div class="form-check mb-3">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember"> Remember me
-              </label>
-            </div> --}}
           </div>
         </div>
         
@@ -122,11 +117,11 @@
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
+      </form>
         
       </div>
     </div>
   </div>
-</form>
 </body>
 </html>
 

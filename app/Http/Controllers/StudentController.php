@@ -31,7 +31,7 @@ class StudentController extends Controller
         //     ->select('name', 'email as user_email')
         //     ->get();
         $data = DB::table('students')
-            ->select('id as my_id', 'name as my_name', 'mobile as my_mobile')
+            ->select('id', 'name', 'mobile')
             ->get();
         // $data = DB::table('students')->get();
         // dd($data);
@@ -58,12 +58,12 @@ class StudentController extends Controller
         // $input = $request->except('_token');
         // dd($input);
 
-        $data = new Student;
+        // $data = new Student;
 
-        $data->name   = $request->name;
-        $data->mobile = $request->mobile;
+        // $data->name   = $request->name;
+        // $data->mobile = $request->mobile;
 
-        $data->save();
+        // $data->save();
 
         return redirect()->route('students.index');
     }
@@ -81,8 +81,9 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        return view('student.edit');
 
+        dd("hello edit $id");
+        // return view('student.edit');
     }
 
     /**
@@ -90,7 +91,13 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = new Student;
+
+        $data->name   = $request->name;
+        $data->mobile = $request->mobile;
+
+        $data->save();
+        return redirect()->route('students.index');
     }
 
     /**
