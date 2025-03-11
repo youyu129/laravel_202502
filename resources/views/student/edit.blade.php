@@ -11,15 +11,19 @@
 
 <div class="container mt-3">
   <h2>Edit</h2>
+  @php
+  // dd($data);
+  @endphp
+
   <form action="{{route('students.store')}}" method="post">
     @csrf
     <div class="mb-3 mt-3">
       <label for="text">Name:</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+      <input type="text" class="form-control" id="name" value="<?=$data['name'];?>" name="name">
     </div>
     <div class="mb-3">
       <label for="text">Mobile:</label>
-      <input type="text" class="form-control" id="mobile" placeholder="Enter mobile" name="mobile">
+      <input type="text" class="form-control" id="mobile" value="<?=$data['mobile'];?>" name="mobile">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

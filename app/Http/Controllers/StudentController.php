@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -30,9 +29,13 @@ class StudentController extends Controller
         // $users = DB::table('users')
         //     ->select('name', 'email as user_email')
         //     ->get();
-        $data = DB::table('students')
-            ->select('id', 'name', 'mobile')
-            ->get();
+
+        // $data = DB::table('students')
+        //     ->select('id', 'name', 'mobile')
+        //     ->get();
+
+        $data = Student::get();
+
         // $data = DB::table('students')->get();
         // dd($data);
 
@@ -81,9 +84,11 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-
-        dd("hello edit $id");
-        // return view('student.edit');
+        // $url = route('students.edit', ['student' => $id]);
+        // dd($url);
+        // dd("hello edit $id");
+        $data = Student::find($id);
+        return view('student.edit', ['data' => $data]);
     }
 
     /**
