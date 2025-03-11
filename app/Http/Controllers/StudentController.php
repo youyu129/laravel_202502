@@ -103,7 +103,8 @@ class StudentController extends Controller
         $data  = Student::where('id', $id)->first();
         // $data = Student::find($id);
         // dd($data);
-        // 從dd複製貼上 多筆複製
+
+        // 從dd複製貼過來 多筆複製
         // "name" => "cat"
         // "mobile" => "0933"
 
@@ -119,6 +120,9 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // dd("hello destroy $id");
+        $data = Student::where('id', $id)->first();
+        $data->delete();
+        return redirect()->route('students.index');
     }
 }

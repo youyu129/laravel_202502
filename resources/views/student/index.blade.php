@@ -49,8 +49,12 @@
           <td>
             {{-- {{route('students.edit')}} --}}
             {{-- {{route('students.destroy')}} --}}
-            <a href="{{route('students.edit',['student'=>$value->id])}}" class="btn btn-warning">Edit</a>
-            <a href="" class="btn btn-danger ms-5">Del</a></td>
+            <form action="{{route('students.destroy',['student'=>$value->id])}}" method="post">
+              @csrf
+              @method('delete')
+              <a href="{{route('students.edit',['student'=>$value->id])}}" class="btn btn-warning">Edit</a>
+              <button class="btn btn-danger ms-5">del</button>
+            </form>
       </tr>
       @endforeach
   </tbody>
