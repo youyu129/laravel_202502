@@ -58,7 +58,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        // $input = $request->except('_token');
+        $input = $request->except('_token');
         // dd($input);
 
         // $data = new Student;
@@ -96,12 +96,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = new Student;
+        // dd("hello update $id");
+        // dd("hello request $request");
 
-        $data->name   = $request->name;
-        $data->mobile = $request->mobile;
+        $input = $request->except('_token', '_method');
+        $data  = Student::where('id', $id)->first();
+        // $data = Student::find($id);
+        // dd($data);
+        // 從dd複製貼上 多筆複製
+        // "name" => "cat"
+        // "mobile" => "0933"
 
+        $data->name   = $input['name'];
+        $data->mobile = $input['mobile'];
         $data->save();
+
         return redirect()->route('students.index');
     }
 
