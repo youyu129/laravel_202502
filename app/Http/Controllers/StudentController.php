@@ -34,9 +34,12 @@ class StudentController extends Controller
         // $data = DB::table('students')
         //     ->select('id', 'name', 'mobile')
         //     ->get();
-        $data = Student::get();
-        $data = Student::with('phone')->get();
+        // $data = Student::get();
+        // $data = Student::with('phone')->get();
 
+        $data = Student::with('phone')->with('hobbies')->get();
+        // dd($data[0]->phone);
+        dd($data[0]->hobbies[1]->name);
         // $data = DB::table('students')->get();
         // dd($data);
         // dd($data[0]->phone);
@@ -110,7 +113,7 @@ class StudentController extends Controller
         // dd("hello request $request");
 
         $input = $request->except('_token', '_method');
-        $data  = Student::where('id', $id)->first();
+        // $data  = Student::where('id', $id)->first();
         // $data = Student::find($id);
         // dd($data);
 
