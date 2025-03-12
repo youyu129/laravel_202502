@@ -53,9 +53,10 @@
           <td>{{$value->mobile}}</td>
           <td>{{$value->phone->phone ?? ''}}</td>
           <td>
-            @foreach($value->hobbies as $hobby)
-            {{$hobby->name?? ''}}<br>
-            @endforeach
+            {{-- @foreach($value->hobbies as $key => $hobby) --}}
+            {{-- {{$key+1}}. {{$hobby->name?? ''}}<br> --}}
+            {{-- @endforeach --}}
+            {{$value->hobbyString ?? ''}}
           </td>
           
           <td>

@@ -43,6 +43,26 @@ class StudentController extends Controller
         // $data = DB::table('students')->get();
         // dd($data);
         // dd($data[0]->phone);
+
+        // $data foreach
+        foreach ($data as $key1 => $value1) {
+            $tmpArr = [];
+            foreach ($value1->hobbiesRelation as $key2 => $value2) {
+                array_push($tmpArr, $value2->name);
+            }
+            $tmpString = implode(',', $tmpArr);
+            // $data[$key1]['hobbies'] = $tmpString;
+            $data[$key1]['hobbyString'] = $tmpString;
+        }
+
+        // dd($data);
+
+        // dd($tmpString);
+
+        // dd($tmpArr);
+
+        // $myArr = ['s14-01','s14-02'];
+
         return view('student.index', ['data' => $data, 'data_fake' => $data_fake]);
     }
 
@@ -71,12 +91,19 @@ class StudentController extends Controller
         $data->mobile = $input['mobile'];
         $data->save();
 
-        // 子表
+        // 子表 phone
         $item             = new Phone;
         $item->student_id = $data->id;
         $item->phone      = $input['phone'];
         $item->save();
 
+        // 子表 hobbies
+        foreach ($hobbyArr as $key => $value) {
+            $hobby             = new Hobby;
+            $hobby->student_id = $data->id;
+            $hobby->name       = $value;
+            $hobby->save();
+        }
         return redirect()->route('students.index');
     }
 
