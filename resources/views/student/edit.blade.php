@@ -10,7 +10,7 @@
 <body>
 
 <div class="container mt-3">
-  <h2>Edit</h2>
+  <h2>Student Edit</h2>
   @php
   // dd($data);
   @endphp

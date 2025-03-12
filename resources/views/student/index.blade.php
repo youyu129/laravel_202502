@@ -21,8 +21,11 @@
 // dd($data);
 @endphp
 
-<h2>Hello DB</h2>
+<h2>Hello Student</h2>
 <p>資料庫撈出來的資料</p>
+@php
+// dd($data);
+@endphp
 <p>
   <a href="{{route('students.create')}}" class="btn btn-success">Add</a>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
@@ -37,6 +40,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Mobile</th>
+      <th>Phone</th>
       <td>OPT</td>
     </tr>
   </thead>
@@ -46,9 +50,8 @@
           <td>{{$value->id}}</td>
           <td>{{$value->name}}</td>
           <td>{{$value->mobile}}</td>
+          <td>{{$value->phone->phone ?? ''}}</td>
           <td>
-            {{-- {{route('students.edit')}} --}}
-            {{-- {{route('students.destroy')}} --}}
             <form action="{{route('students.destroy',['student'=>$value->id])}}" method="post">
               @csrf
               @method('delete')

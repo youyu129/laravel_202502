@@ -33,12 +33,12 @@ class StudentController extends Controller
         // $data = DB::table('students')
         //     ->select('id', 'name', 'mobile')
         //     ->get();
-
         $data = Student::get();
+        $data = Student::with('phone')->get();
 
         // $data = DB::table('students')->get();
         // dd($data);
-
+        // dd($data[0]->phone);
         return view('student.index', ['data' => $data, 'data_fake' => $data_fake]);
     }
 
@@ -61,12 +61,12 @@ class StudentController extends Controller
         $input = $request->except('_token');
         // dd($input);
 
-        // $data = new Student;
+        $data = new Student;
 
-        // $data->name   = $request->name;
-        // $data->mobile = $request->mobile;
+        $data->name   = $request->name;
+        $data->mobile = $request->mobile;
 
-        // $data->save();
+        $data->save();
 
         return redirect()->route('students.index');
     }
