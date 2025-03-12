@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CatController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -94,6 +95,10 @@ Route::get('/teacher', function () {
     return redirect()->route('teachers.index');
 });
 
+Route::get('/cat', function () {
+    return redirect()->route('cats.index');
+});
+
 // 小名
 Route::get('/students', function () {
     return view('student.index');
@@ -115,6 +120,10 @@ Route::get('/test0311s', function () {
     return view('test0311.index');
 })->name('test0311s.index');
 
+Route::get('/cats', function () {
+    return view('cat.index');
+})->name('cats.index');
+
 // teachers
 Route::resource('teachers', TeacherController::class);
 
@@ -128,3 +137,5 @@ Route::resource('tests', TestController::class);
 Route::resource('students', StudentController::class);
 
 Route::resource('shops', ShopController::class);
+
+Route::resource('cats', CatController::class);
