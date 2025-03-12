@@ -93,7 +93,11 @@ class StudentController extends Controller
         // $url = route('students.edit', ['student' => $id]);
         // dd($url);
         // dd("hello edit $id");
-        $data = Student::find($id);
+        // $data = Student::find($id);
+
+        $data = Student::where('id', $id)->with('phone')->first();
+        // dd($data);
+
         return view('student.edit', ['data' => $data]);
     }
 
@@ -114,9 +118,20 @@ class StudentController extends Controller
         // "name" => "cat"
         // "mobile" => "0933"
 
+        //主表
+        $data         = Student::where('id', $id)->first();
         $data->name   = $input['name'];
         $data->mobile = $input['mobile'];
         $data->save();
+
+        //子表
+        // 刪除子表
+        Phone::where('student_id', $id)->delete();
+        // 新增子表
+        $item             = new Phone;
+        $item->student_id = $data->id;
+        $item->phone      = $input['phone'];
+        $item->save();
 
         return redirect()->route('students.index');
     }

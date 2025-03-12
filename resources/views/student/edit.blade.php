@@ -30,9 +30,15 @@
       <label for="text">Mobile:</label>
       <input type="text" class="form-control" id="mobile" value="{{$data['mobile']}}" name="mobile">
     </div>
+    <div class="mb-3">
+      <label for="text">Phone:</label>
+      <input type="text" class="form-control" id="phone" value="{{$data['phone']['phone']}}" name="phone">
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
 
 </body>
 </html>
+
+
