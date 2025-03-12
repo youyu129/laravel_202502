@@ -39,7 +39,7 @@ class StudentController extends Controller
 
         $data = Student::with('phone')->with('hobbies')->get();
         // dd($data[0]->phone);
-        dd($data[0]->hobbies[1]->name);
+        // dd($data[0]->hobbies[0]->name);
         // $data = DB::table('students')->get();
         // dd($data);
         // dd($data[0]->phone);
